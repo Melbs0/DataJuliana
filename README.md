@@ -1,2 +1,2 @@
 # DataJuliana
--[ ] arrumar dia 
+-[] arrumar dia 

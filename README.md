@@ -1,11 +1,13 @@
 # DataJuliana
 
-Erro Makefilel.win fudeu tudo
+char semana [7] fudeu tudo
 
 
 
 
 
-- [ ] ### arrumar dia
+- [.] ### arrumar dia
 
-- [ ] ### fazer DoWhile
+- [.] ### fazer DoWhile
+- [ ] ### testar bisexto
+- [ ] ### fzr switchcase funcionar

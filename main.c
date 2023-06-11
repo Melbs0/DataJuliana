@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
 	do{
 		printf("insira a data(DD/MM/AAAA)");
 		scanf("%d%d%d", &dia, &mes, &ano);
-		printf("a data juliana correspondente a entrada �: %d", dj(ano,mes,dia));
+		printf("a data juliana correspondente a entrada é: %d", dj(ano,mes,dia));
 		
 		dj1 = dj(ano,mes,dia)%7;
 		
@@ -128,7 +128,64 @@ int bisexto(ano){
 	
 	
 }
+int checaMes (int mes, int dia, int b6){
 
+		 
+	if (mes>12|| mes < 1 || dia >31 ||dia < 1  ){ /*checa se o ano tem entre 1 e 12 meses e se os meses tem entre 1 e 31 dias*/
+
+		return 0;
+
+	}
+	
+
+	else if(mes == 2 && dia >27){ // checa se o mês é fevereiro, e se o dia é maior que 27
+		
+		if (b6 ==0 && dia == 28){ //checa se o ano não é bissexto E se tem a quantidade certa de dias
+				
+			return 1;
+			}
+
+		else if (b6 == 1 && dia == 29){ //checa se o ano é bissexto E se tem a quantidade certa de dias
+		
+			return 1;
+			}
+
+		else { //retorna 0 (false) caso o dia de fevereiro seja invalido >28 em ano não bissexto ou > 29 em ano bissexto 
+
+			return 0;
+		
+			}
+		}
+
+
+	else if (mes != 2 && dia >=30){ // checa se o mês é diferente de fevereiro e se o dia é igual ou maior que 30
+		if (mes == 1 || mes == 3|| mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12 && dia == 31) { // checa se o mes deve ter 31 dias
+
+			return 1;
+
+			}
+
+		else if (mes == 4 ||mes == 6 ||mes == 9 ||mes == 11 && dia == 30){ // checa se o mes deve ter 30 dias
+		
+			return 1;
+		
+			}
+
+		else { // retorna 0 (false) caso, o dia seja 31 dias em um mes onde devria ter apenas 30 e vice versa
+		
+			return 0;
+		
+			}
+}
+
+	else { // retorna 1 (true) para 1 <= mes <=12, e para qualquer dia <=27
+		
+		return 1;
+		
+		}
+		
+	
+	}
 
 
 

@@ -6,60 +6,87 @@
 
 int main(int argc, char *argv[]) {
 	int dia, mes,ano, dj1;
-	char semana [7];
+	int monthCheck, b6, Ce, allCheck;
+
 	
 	do{
-		printf("insira a data(DD/MM/AAAA)");
+		
+		printf("insira a data(DD/MM/AAAA)\n");
 		scanf("%d%d%d", &dia, &mes, &ano);
-		printf("a data juliana correspondente a entrada Ã©: %d", dj(ano,mes,dia));
 		
-		dj1 = dj(ano,mes,dia)%7;
 		
-		/*switch(dj1){
-			
-			case 0:
-				
-				break;
-			
-			case 1:
-				
-				break;
-			
-			case 2:
-				
-				break;
-				
-			case 3:
-				
-				break;
-				
-			case 4:
-				
-				break;
-				
-			case 5:
-				
-				break;
-				
-			case 6:
-				
-				break;
-			
-		}*/
+		b6 = bisexto(ano);
+		printf("%d \n", b6);
+		monthCheck = checaMes(mes, dia, b6);
+		printf("%d\n", monthCheck);
+		Ce = casosEspecificos(dia, mes, ano);
+		printf("%d\n", Ce);
+		allCheck = monthCheck * Ce;
 		
+		if(allCheck == 0){
+			
+			printf("a data inserida e invalida! \n");
+			
+		}
+		
+		else {
+			
+			
+			printf("a data juliana correspondente a entrada e: %d \n", dj(ano,mes,dia));
+			
+			printf("esse dia caiu em ");
+		
+			dj1 = dj(ano,mes,dia)%7;
+			
+			switch(dj1){
+				
+				case 0 :
+					
+					printf("um domingo\n");
+					break;
+				
+				case 1 :
+					
+					printf("uma segunda\n");
+			
+					break;
+				
+				case 2 :
+					
+					printf("uma terça\n");
+					break;
+				
+				case 3 :
+					
+					printf("uma quarta\n");
+					break;
+				
+				case 4 :
+					
+					printf("uma quinta\n");
+					break;
+			
+				case 5 :
+					
+					printf("uma sexta\n");
+					break;
+				
+				case 6 :
+					
+					printf("um sabado\n");
+					break;
+				
+			}
+			
+			
+		}
 		
 		
 	}
-	while( dia<1 || dia<31 || )
-	
-	printf("%d",(dj(2023, 6,5)%7));
+	while(allCheck == 1 );
 	
 	
-	
-	
-	
-	
-	
+	printf("o rpogama foi finalizado pois uma data invalida foi inserida");
 	
 	return 0;
 }
@@ -98,7 +125,6 @@ int dj(int Ano, int Mes, int Dia){
 	e = (int) floor(30.6001*(Mes+1));
 	
 	dj = d+e+Dia+c-1524;
-	printf("%d \n", c);
 	
 	return dj;
 	
@@ -123,7 +149,7 @@ int bisexto(ano){
 	}
 	
 	else {
-	return 0
+	return 0;
 	}
 	
 	
@@ -185,6 +211,45 @@ int checaMes (int mes, int dia, int b6){
 		}
 		
 	
+	}
+	
+	int casosEspecificos (int dia, int mes, int ano){
+
+		/*
+		checa datas especificas: 
+		
+		-como anteriores a 24/11/4714 AEC
+		- "   posteriores a 23/11/3766 DEC
+		- entre 5/10 e 14/10 de 1524
+		*/
+
+		/*if (ano < -4714){ // checa se o ano é anterior a 4714 AEC
+			return 0;
+		}
+		else */if ( ano == -4714 && mes<11 && dia < 24){
+			return 0;
+		}
+		else if (ano == 0){
+			return 0;
+		}
+		else if (ano > 3766){
+			return 0;
+		}
+		else if (ano == 3766 && mes > 11 && dia >23){
+			return 0;
+		}
+		else if (ano == 1524 && mes == 10 && dia >=5){
+			return 0;
+		}
+		else if (ano == 1524 && mes == 10 && dia <=14){
+			return 0;
+		}
+		else {
+			return 1;
+		}
+
+
+
 	}
 
 
